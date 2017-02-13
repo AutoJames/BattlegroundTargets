@@ -322,7 +322,7 @@ local pvptrinketIDs = {
    [7744] =  30, -- Will of the Forsaken (Undead)
   [42292] = 120, --trinket
   [59752] =  30,  -- human
-  
+
   [195710] = 180,  -- 180 PvP talent Trinket
   [208683] = 120  -- 120 PvP talent Trinket
 }
@@ -550,7 +550,7 @@ for classID = 1, MAX_CLASSES do
 	classes[classTag].fixname = {}
 	classes[classTag].fix = false
 	for i = 1, numTabs do
-		local id, name, _, icon, _, role = GetSpecializationInfoForClassID(classID, i)
+		local id, name, _, icon, role = GetSpecializationInfoForClassID(classID, i)
 		--print(role, id, classID, i, name, icon, "#", GetSpecializationInfoForClassID(classID, i))
 		if     role == "DAMAGER" then classes[classTag].spec[i] = {role = 3, specID = id, specName = name, icon = icon} tinsert(classROLES.DAMAGER, {classTag = classTag, specIndex = i}) -- DAMAGER: total = 23
 		elseif role == "HEALER"  then classes[classTag].spec[i] = {role = 1, specID = id, specName = name, icon = icon} tinsert(classROLES.HEALER,  {classTag = classTag, specIndex = i}) -- HEALER : total =  6
@@ -561,7 +561,7 @@ for classID = 1, MAX_CLASSES do
 		if name ~= fname then
 			classes[classTag].fixname[fname] = name
 			classes[classTag].fix = true
-		end		
+		end
 	end
 end
 
@@ -5122,12 +5122,12 @@ function BattlegroundTargets:SetupButtonTextures(side) -- BG_Faction_Dependent
 			end
 		end
 		--]]
-		if isLowLevel then 
+		if isLowLevel then
 			trinketTexture = 338784   --lowlevelpvptrinket3m
 		else
 			trinketTexture = 1322720  --newpvptalenttrinket2m
 		end
-		
+
 		local button = GVAR[side.."Button"]
 		for i = 1, currentSize do
 			button[i].PVPTrinketTexture:SetTexture(trinketTexture)
@@ -6048,7 +6048,7 @@ function BattlegroundTargets:DefaultShuffle()
 		for i = 1, 40 do
 			local rndnum = testData[side].TargetofTarget[i]
 			local classToken = class_IntegerSort[ random(1,11) ].cid
-			local talentSpec			
+			local talentSpec
 			if classToken ~= "DEMONHUNTER" then
 				talentSpec = classes[ classToken ].spec[ random(1,3) ].role
 			else
@@ -6829,10 +6829,10 @@ function BattlegroundTargets:BattlefieldScoreUpdate()
 		local name, _, _, _, _, faction, _, _, classToken, _, _, _, _, _, _, talentSpec = GetBattlefieldScore(index)
 		--print("INPUT_NAME_CHECK: _score_", index, name, faction, classToken, talentSpec, "#", GetBattlefieldScore(index))
 
-		
+
 
 					--bad locale fix
-					
+
 		if classes[classToken].fix then
 			if classes[classToken].fixname[talentSpec] ~= nill then
 			--	print ("fixed: ".. talentSpec .. " to ".. classes[classToken].fixname[talentSpec])
@@ -6844,7 +6844,7 @@ function BattlegroundTargets:BattlefieldScoreUpdate()
 			--if talentSpec == "Повелительница зверей" then talentSpec = "Повелитель зверей" end
 
 
-		
+
 
 		if not name then
 			if not BattlegroundTargets.UnknownNameIndex then
@@ -6916,7 +6916,7 @@ function BattlegroundTargets:BattlefieldScoreUpdate()
 				end
 			end
 			--bad hotfix for ru locale
-						
+
 
 			if not specicon then
 				if not testData.specTest then testData.specTest = {} end
@@ -7348,7 +7348,7 @@ function BattlegroundTargets:IsNotBattleground()
 --			for k2, v2 in pairs(v) do
 				--Print("ERROR#3 unknown spec:", v2.locale, v2.faction, v2.classToken, v2.talentSpec)
 			--end
-		
+
 		--end
 		testData.specTest = nil
 	end
@@ -9035,13 +9035,13 @@ function BattlegroundTargets:UpdatePvPTrinket(button, unitName, curTime) -- pvp_
 				   button.PVPTrinketTexture:SetTexture( GetSpellTexture(id) )
 				end
 			end
-			
-			
+
+
 			button.PVPTrinketTexture:SetAlpha(1)
 			button.PVPTrinketTxt:SetText(trinketTime)
 		else
 			DATA.PvPTrinketEndTime[unitName] = nil
-			if DATA.PvPTrinketId[unitName] == 214027 then 
+			if DATA.PvPTrinketId[unitName] == 214027 then
 				button.PVPTrinketTexture:SetAlpha(0.3)
 			else
 			button.PVPTrinketTexture:SetAlpha(0)
@@ -9049,7 +9049,7 @@ function BattlegroundTargets:UpdatePvPTrinket(button, unitName, curTime) -- pvp_
 			button.PVPTrinketTxt:SetText("")
 		end
 	else
-		if DATA.PvPTrinketId[unitName] == 214027 then 
+		if DATA.PvPTrinketId[unitName] == 214027 then
 			button.PVPTrinketTexture:SetAlpha(0.3)
 		else
 		button.PVPTrinketTexture:SetAlpha(0)

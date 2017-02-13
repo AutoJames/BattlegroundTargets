@@ -1,5 +1,5 @@
-## Interface: 70000
-## Title: BattlegroundTargets
+## Interface: 70100
+## Title: BattlegroundTargets - 7.1.5
 ## Notes: A Friend-Enemy-Unit-Frame for battlegrounds.
 ## Notes-deDE: Eine Freund-Feind-Anzeige für Schlachtfelder.
 ## Author: kunda
